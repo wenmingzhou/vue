@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+    <style>
+        .s{
+            background: red;
+        }
+        .g{
+            background: green;
+        }
+        .k{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- v-bind 专门绑定属性 -->
+    <div id="app">
+        <!--class 绑定 对象控制方法-->
+        <div v-bind:class="{g:isg}">adafafa</div>
+
+        <!--class 绑定 数组控制方法-->
+        <div v-bind:class="[iss,isk]">adafafa</div>
+
+        <!-- v-bind:属性的名字 ="变量的名字" -->
+        <img v-bind:src="img_path" >
+        <!-- 如果属性里面有变量，要把前面的字符串用单引号引起来，再用+号连接变量 -->
+        <a v-bind:href="'http://127.0.0.1:9000/getone?id='+ids" ></a>
+
+
+        <div class="s">test</div>
+    </div>
+</body>
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                img_path :'./img/1.jpg',
+                ids :7,
+                isg :true,
+                iss :'s',
+                isk :'k',
+            }
+        });
+
+    </script>
+</html>

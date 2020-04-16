@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--#指令 是指 带有v-前缀的特殊特性#-->
+       <p v-text="s"></p>  <!-- 原样展示内容-->
+       <p v-html="n"></p>  <!-- 能解析html标签-->
+        <!--插值表达式与V-text类似,原样展示内容-->
+        <p>{{k}}</p>
+
+        <!--插值表达式与V-text区别-->
+        <!--V-text会替换标签内的全部内容-->
+        <p v-text="s">0000</p>
+        <!--插值表达式指替换局部内容-->
+        <p>0000{{k}}</p>
+    </div>
+</body>
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                s:'<s>123</s>',
+                n:'<s>456</s>',
+                k:'<s>456</s>',
+            }
+        });
+
+    </script>
+</html>

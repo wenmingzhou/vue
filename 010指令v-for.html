@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <ul>
+            <!--单个-->
+            <li v-for="(v,k) in arr[2]" v-bind:id="k">{{v}}----{{k}}</li>
+            <!--展示偶数 v-if="k%2 !==0"-->
+            <li v-for="(v,k) in arr" v-bind:id="k" v-if="k%2 !==0">{{v}}----{{k}}</li>
+
+        </ul>
+
+
+        <ul>
+            <!--对象-->
+            <li v-for="(v,k) in ob">{{v}}</li>
+
+        </ul>
+    </div>
+    <script>
+    var app =new Vue({
+            el: '#app',
+            //数据
+            data: {
+               arr:['1','2','3','4','5'], //数组
+               ob:{name:'刘能',age:'19',love:'看电影'}, //对象
+            },
+
+        })
+    </script>
+</body>
+</html>

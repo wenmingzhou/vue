@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--#插值 表达式#-->
+        <s>{{user_data}}</s>
+        {{kk}}
+        <!--#三元运算符#-->
+        {{us>3?'大':'小'}}
+        <!-- 函数调用-->
+        {{hh()}}
+        <!-- 对象的调用 -->
+        {{obj.name}}
+    </div>
+</body>
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                us:1,
+                hh:function(){
+                    return 4+3;
+                },
+                obj:{
+                    name:"李四"
+                },
+                user_data:"hhh",
+                kk :"哈哈哈"
+            }
+        });
+        console.log(app); //$开通都是vue对象中的公有属性(所有人都可以调用)
+                          //_开通都是vue对象中的私有属性(只有Vue对象里面访问)
+                          //代码中data对象中的全部内容，都会直接访问VUE实例对象
+        console.log(app.kk)
+    </script>
+</html>

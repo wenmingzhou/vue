@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!--计算属性  (computed)通常里面都是一个个计算相关的函数，返回最后计算出来的值
+                   好处就是，它把新的数据缓存下来了，当其他的依赖数据没有发生改变，它调用的是缓存的数据，这就极大的提高了我们程序的性能
+    -->
+    <div id="app">
+        <input type="text" v-model="x"><br/>
+        <input type="text" v-model="y"><br/>
+        <!--插值表达式尽可能避免使用计算运算,性能较低   {{x+y}}-->
+        {{add()}}
+        <!--不需要()-->
+        {{kks}}
+   </div>
+   <script>
+   var app =new Vue({
+           el: '#app',
+           //数据
+           data: {
+               x:"",
+               y:"",
+           },
+           //x,y一改变，add就会被调用
+           methods:{
+               add:function () {
+                   return this.x+this.y+Date.now();
+               }
+           },
+
+           computed:{
+               //调用一次后，如果在其他地方使用，
+               kks:function () {
+                   return this.x+this.y+Date.now();
+               }
+           }
+
+       })
+   </script>
+</body>
+</html>

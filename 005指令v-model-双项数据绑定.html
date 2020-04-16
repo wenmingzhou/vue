@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!--   v-model 只能用于用户可操作的标签(input,select,textarea...)
+           用户操作的时什么，v-model 代表的就是什么
+     -->
+    <div id="app">
+        <p v-text="t">123</p>
+        {{s}}
+        <input type="text" v-model="val">
+        <textarea v-model="tval"></textarea>
+
+        <!-- CheckBox绑定的是 checked的值
+             点击checkbox ched的值是其对应的value
+        -->
+        吃饭:<input type="checkbox" value="eat"   v-model="ched">
+        睡觉:<input type="checkbox" value="sleep" v-model="ched">
+        打豆豆:<input type="checkbox" value="ddd" v-model="ched">
+        {{ched}}
+    </div>
+</body>
+    <!--vue对象中数据发生改变，页面中的内容也会跟着改变 -->
+    <!--页面中的内容改变，vue对象中数据发生也会跟着改变 -->
+    <!--这种情况称为数据双项绑定 -->
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                t:'345',
+                s:'678',
+                val:'hhh',
+                tval:'mmmm',
+                ched:[],
+            }
+        });
+        //console.log(app.t)
+
+    </script>
+</html>

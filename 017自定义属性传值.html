@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+   <p v-color="pink">123</p>
+</div>
+<script>
+    //自定义指令的值需要先有数据才能使用 (没有绑定功能)
+    var app =new Vue({
+        el: '#app',
+        //数据
+        data: {
+            pink:'red',
+        },
+        //局部自定义指令
+        directives:{
+            color:{
+                inserted:function (el,data) {
+                    el.style.color =data.value;
+                }
+            }
+        }
+    });
+ 
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!--
+    .number  输入值转为数值类型 与type="number"一起使用
+    .trim    自动过滤用户输入的首尾空白字符
+    .lazy    input框 change 事件之后进行同步
+    -->
+    <div id="app">
+        <input type="number" v-model.number="val">
+        {{val}}
+
+        <input type="number" v-model.lazy="val">
+        {{val}}
+    </div>
+</body>
+
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                val:'',
+            }
+        });
+        //console.log(app.t)
+
+    </script>
+</html>

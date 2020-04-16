@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!-- v-on 绑定事件监听器 简写 @
+    //事件修饰符
+    .left  只当点击鼠标左键时触发。
+    .right 只当点击鼠标右键时触发。
+    .middle只当点击鼠标中键时触发。
+    .enter 只当点击enter键时触发。
+    传参和时间对象的获取
+    -->
+    <div id="app">
+        <input type="button" value="按钮" v-on:click="ffun(1,2)">
+        <input type="button" value="按钮" v-on:click="ffun2">
+        <!-- 如果事件绑定时需要传参和获取时间对象，在事件绑定时必须手动传入公用属性$event-->
+        <input type="button" value="按钮" v-on:click="ffun3($event,3,4)">
+    </div>
+</body>
+
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            //数据
+            data:{
+                val:'',
+            },
+            //函数
+            methods:{
+                ffun:function (a,b) {
+                    alert(a);
+                    alert(b);
+                },
+                ffun2:function (ev) {
+                    //target事件的目标元素
+                    alert(ev.target.value);
+                },
+                ffun3:function (ev,a,b) {
+                    //target事件的目标元素
+                    alert(ev.target.value);
+                    alert(a);
+                    alert(b);
+                },
+            }
+        });
+        //console.log(app.t)
+
+    </script>
+</html>

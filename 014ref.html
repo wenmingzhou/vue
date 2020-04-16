@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="按钮" @click="getP"><br/>
+    <!--ref 自定义节点属性的方式-->
+    <p ref="ps">11</p>
+    <p ref="pf">22</p>
+</div>
+<script>
+    var app =new Vue({
+        el: '#app',
+        //数据
+        data: {
+        },
+        //this.$refs 来获取所有带有ref属性的节点对象
+
+        methods:{
+            getP:function () {
+                console.log(this.$refs.ps.innerHTML);
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

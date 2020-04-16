@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="button" v-on:click="ff" value="按钮">
+        <p v-show="is_show">付费</p>
+    </div>
+    <script>
+    var app =new Vue({
+            el: '#app',
+            //数据
+            data: {
+                is_show: false,
+            },
+            methods:{
+                ff:function () {
+                    this.is_show=!this.is_show
+                }
+
+            },
+        })
+    </script>
+</body>
+</html>

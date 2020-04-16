@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!--b-bind: 简写:-->
+    <!-- v-bind 专门绑定属性 -->
+    <div id="app">
+        <!--对象写法 对象里面 属性名称不能用-,要大写 fontSize代替 ''引起来的表示字符串 -->
+        <div v-bind:style="{color:c,fontSize:s+'px'}">test</div>
+
+
+        <!--数组写法 -->
+        <div v-bind:style="[F,C]">test</div>
+    </div>
+</body>
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                s:40,
+                c:'red',
+                F:{
+                    color:'red'
+                },
+                C:{
+                    fontSize:'50px'
+                },
+            }
+        });
+
+    </script>
+</html>

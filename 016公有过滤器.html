@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" value="按钮" v-model="msg"><br/>
+    {{msg|myf|nu}}
+</div>
+
+<div id="app2">
+    <input type="text" value="按钮" v-model="msg"><br/>
+    {{msg|myf|nu}}
+</div>
+<script>
+    //声明公有过滤器
+    Vue.filter('myf',function (val) {
+        return val.toUpperCase();
+    });
+    Vue.filter('nu',function (val) {
+        var reg =/\d/g;
+        return val.replace(reg,'*');
+    });
+    var app =new Vue({
+        el: '#app',
+        //数据
+        data: {
+            msg:'',
+        },
+    });
+    var app2 =new Vue({
+        el: '#app2',
+        data: {
+            msg:'',
+        },
+    })
+</script>
+</body>
+</html>

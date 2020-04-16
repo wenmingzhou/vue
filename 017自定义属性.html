@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+   <p v-red>123</p>
+   <p v-red>456</p>
+</div>
+<script>
+    //全局自定义指令
+    Vue.directive('red',{
+        inserted:function (el) {
+              el.style.background ='red';
+        }
+    });
+    var app =new Vue({
+        el: '#app',
+        //数据
+        data: {
+            msg:'',
+        },
+        //局部自定义指令
+        directives:{
+            red:{
+                inserted:function (el) {
+                    el.style.color ='green';
+                }
+            }
+        }
+    });
+ 
+</script>
+</body>
+</html>

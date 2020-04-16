@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <!-- this 永远指向一个对象
+         this的指向和函数的作用域没有关系
+
+    -->
+    <div id="app">
+
+    </div>
+</body>
+
+    <script>
+       var o1 ={
+           name :"李四",
+           age :19,
+       };
+       var o2 ={
+           name:'王五',
+           age:'18',
+           f2:f,
+       };
+       var age=1;
+       function f(){
+           console.log(age);        //普通变量找作用域 1
+           console.log(this.age);   //如果是this 找谁在调用它 19
+       }
+
+      o1.f3 =o2.f2;
+       o1.f3();
+    </script>
+</html>

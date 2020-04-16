@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <p v-text="t">123</p>
+        {{s}}
+        <input type="text" :value="val">
+    </div>
+</body>
+    <!--vue对象中数据发生改变，页面中的内容也会跟着改变 -->
+    <!--这种情况称为数据单项绑定 -->
+    <script>
+        //new Vue 得到实例对象
+        var app =new Vue({
+            el:'#app',
+            data:{
+                t:'345',
+                s:'678',
+                val:'hhh',
+            }
+        });
+        //console.log(app.t)
+
+    </script>
+</html>

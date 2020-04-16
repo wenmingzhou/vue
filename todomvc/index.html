@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="css/app.css">
+		<script src="vue/vue.js"></script>
+	</head>
+	<body>
+		<section class="todoapp" id="app">
+			<header class="header">
+				<h1>{{title}}</h1>
+				<input v-on:keyup.enter="addToDoList" class="new-todo" v-model="input_val" >
+			</header>
+			<section class="main">
+				<input id="toggle-all" class="toggle-all" type="checkbox" v-on:click="selectAll" v-model="ched">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul class="todo-list">
+
+					<li v-bind:class="{completed:v.status}" v-for="(v,k) in todoData">
+						<div class="view">
+							<input class="toggle" type="checkbox" v-model="v.status">
+							<label>{{v.content}}</label>
+							<button class="destroy" v-on:click="del(k)"></button>
+						</div>
+						<input class="edit" value="Create a TodoMVC template">
+					</li>
+
+				</ul>
+			</section>
+			<footer class="footer">
+				<span class="todo-count"><strong>0</strong> item left</span>
+				<ul class="filters">
+					<li>
+						<a class="selected" href="#/">All</a>
+					</li>
+					<li>
+						<a href="#/active">Active</a>
+					</li>
+					<li>
+						<a href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<!-- Hidden if no completed items are left ↓ -->
+				<button class="clear-completed" @click="clearAll">Clear completed</button>
+			</footer>
+		</section>
+
+	<script>
+		var listDatas =[
+				{id:'1',content:"吃鸡",status:true},
+				{id:'2',content:"睡觉",status:false},
+				{id:'3',content:"打豆豆",status:false},
+		];
+		var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+		var result = words.filter(function (val) {
+			if(val.length>6){
+				return true;
+			}
+		});
+		console.log(result);
+		//filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。
+		var app =new Vue({
+			el:'#app',
+			data:{
+				title:"toDoList",
+				todoData:listDatas,
+				input_val:'',
+				ched:false,
+			},
+			methods:{
+				addToDoList:function () {
+					if (this.input_val==''){
+						alert('内容不能为空');
+						return false;
+					}
+					if(this.todoData.length==0){
+						var ids =  1;
+					}else {
+						var ids = this.todoData[this.todoData.length - 1].id + 1;
+					}
+					var ob ={
+						id:ids,
+						content:this.input_val,
+						status:false,
+					}
+					this.todoData.push(ob);
+					this.input_val='';
+				},
+				selectAll:function () {
+					//alert(this.ched); //事件先执行，之后改checked的值 (之前checked是false,后面变为true)
+					var c=!this.ched
+					for(var i=0;i<this.todoData.length;i++){
+						this.todoData[i].status=c;
+					}
+				},
+
+				del:function (key) {
+					this.todoData.splice(key,1)   //删除数组指定下表的元素 会改变原始数组的值
+				},
+				clearAll:function () {
+					/*var newArr =[];
+					for(var i=0;i<this.todoData.length;i++){
+						if(this.todoData[i].status==false){
+							newArr.push(this.todoData[i]);
+						}
+					}
+					this.todoData =newArr;*/
+
+					this.todoData.filter(function (obj) {
+						if(obj.status==false){
+							return true
+						}
+					})
+				},
+
+
+			},
+
+
+		})
+	</script>
+	</body>
+</html>
