@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-show="msg"></div>
+    <!--自定义属性-->
+    <!--props可以获取属性的值-->
+    <!--添加属性cc="msg" v-bind绑定属性的技术，实现属性获取data中的数据-->
+    <!--从而传递给子级组件，实现父级组件想子级组件传递的效果-->
+    <my v-bind:cc="msg"></my>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            msg:'没事干',
+        },
+        components: {
+            my: {
+                //组件中提供props属性,他可以获取标签中自定义属性的值
+                props:['cc'],
+                template: '<h2>{{cc}}</h2>'
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+
+        <!--将组件的名字当做成对标签来使用-->
+        <myzujian></myzujian>
+        <mytemp></mytemp>
+    </div>
+
+    <div id="vv">
+        <!--html的标签是不区分大小写的 可以-->
+        <myko></myko>
+        <my-ko></my-ko>
+    </div>
+
+<script>
+    //声明全局组件(可以用在任何新创建的 Vue 根实例使用)
+    //方法的第一个参数是组件的名字
+    //第二个参数为对象
+    Vue.component('myzujian',{
+        //对象中的template属性的值是展示到页面的内容
+        template:"<h2>哈哈哈哈哈哈</h2>"
+    });
+    var app =new Vue({
+        el: '#app',
+        //数据
+        data: {
+            msg:'123',
+        },
+        //声明局部组件(只能在#app里面使用)
+        components:{
+            mytemp:{
+                template:"<h2>test good</h2>"
+            }
+        }
+    });
+
+    var app =new Vue({
+        el: '#vv',
+        //数据
+        //声明局部组件(只能在#app里面使用)
+        components:{
+            myko:{
+                template:"<h2>myko1</h2>"
+            },
+            //如果组件的名称是小驼峰命名 那么调用的标签用把大写转为小写加-
+            myKo:{
+                //有且只有一个根节点,不能有平节的标签报错
+                template:"<h2>myKo2</h2>"
+            },
+        }
+    });
+</script>
+</body>
+</html>

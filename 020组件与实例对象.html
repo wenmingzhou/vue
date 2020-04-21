@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <mytemp></mytemp>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        //template: '<s>111</s>', //如果有template ，那就删除#app的标签，使用template的内容
+        components: {
+            //一个组件就是一个vue的实例对象
+            //1:自定义组件 没有el
+            //2:自定义组件中的data必须是一个方法(函数)
+            mytemp: {
+                //组件中的数据，必须是一个函数
+                data:function(){
+                    return{
+                        msg:'234'
+                    }
+                },
+                methods: {
+                    cli: function () {
+                        alert(this.msg);
+                    }
+                },
+                template: '<h2 @click="cli">test</h2>'
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>
