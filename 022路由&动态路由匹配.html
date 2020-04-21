@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue/vue.js"></script>
+    <script src="vue/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+      <!--  <li>
+            <a href="#/login">登录</a>
+        </li>
+        <li>
+            <a href="#/reg">注册</a>
+        </li>-->
+        <li><router-link to="/login">登录</router-link></li>
+        <li><router-link to="/reg">注册</router-link></li>
+        <!--传递数据直接卸载/ 后面-->
+        <li><router-link to="/user/20">个人</router-link></li>
+    </ul>
+    <router-view></router-view>
+</div>
+
+<script>
+    //获取路由对象
+    var ro = new VueRouter({
+        //定义路由规则
+        routes: [
+            //具体匹配规则
+            //{path:匹配地址栏路由变化,component:组件}
+            {path: '/reg', component: {template: "<s>我是注册</s>"}},
+            {path: '/login', component: {template: "<s>我是登录</s>"}},
+            //获取数据是变量的名字前面加:
+            {path: '/user/:id', component:
+                    {
+                        mounted(){
+                            //router会为vue添加公有属性$route,使用$route来获取数据
+                            console.log(this.$route.params.id);
+                        },
+                        template: "<s>我是{{$route.params.id}}个人</s>"}
+                    },
+        ]
+    });
+
+    var app = new Vue({
+        el: '#app',
+        router:ro,
+    });
+</script>
+</body>
+</html>
